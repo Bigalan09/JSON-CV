@@ -41,13 +41,13 @@ function loadTemplate(templateName) {
     }
     let conversion = require("phantom-html-to-pdf")();
     let html = getTemplate(templateName);
-    let header = {};
-    let footer = {};
-    if (!templateExists(templateName + '/header.html')) {
+    let header = "";
+    let footer = "";
+    if (templateExists(templateName + '/header.html')) {
         header = getTemplateHeader(templateName);
         header = TemplateEngine(header, cv);
     }
-    if (!templateExists(templateName + '/footer.html')) {
+    if (templateExists(templateName + '/footer.html')) {
         footer = getTemplateFooter(templateName);
         footer = TemplateEngine(footer, cv);
     }
