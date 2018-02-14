@@ -41,12 +41,17 @@ function loadTemplate(templateName) {
     }
     let conversion = require("phantom-html-to-pdf")();
     let html = getTemplate(templateName);
-    let header = getTemplateHeader(templateName);
-    let footer = getTemplateFooter(templateName);
-
+    let header = {};
+    let footer = {};
+    if (!templateExists(templateName + '/header.html')) {
+        header = getTemplateHeader(templateName);
+        header = TemplateEngine(header, cv);
+    }
+    if (!templateExists(templateName + '/footer.html')) {
+        footer = getTemplateFooter(templateName);
+        footer = TemplateEngine(footer, cv);
+    }
     html = TemplateEngine(html, cv);
-    header = TemplateEngine(header, cv);
-    footer = TemplateEngine(footer, cv);
 
     conversion({
         html: html,
@@ -54,7 +59,7 @@ function loadTemplate(templateName) {
             format: 'A4'
         },
         header: header,
-        footer: footer,
+        footer: footer
     }, function (err, pdf) {
         var output = fs.createWriteStream('cv.pdf')
         pdf
