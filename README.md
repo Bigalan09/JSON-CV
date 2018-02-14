@@ -63,3 +63,6 @@ npm install
 ## Themes
 - darkknight
 - chronological
+
+## Templating
+Templates use Handlebars.js for the templating.

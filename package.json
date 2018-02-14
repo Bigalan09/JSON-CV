@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Bigalan09/JSON-CV#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
+    "handlebars": "^4.0.11",
     "moment": "^2.20.1",
     "phantom-html-to-pdf": "^0.5.5"
   }

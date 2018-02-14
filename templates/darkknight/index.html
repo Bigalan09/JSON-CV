@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <style>
-        html, body {
+        html,
+        body {
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 15px;
             line-height: 26px;
         }
+
         h1 {
             font-size: 22px;
             font-weight: bold;
@@ -30,6 +32,7 @@
             font-weight: bold;
             text-decoration: underline;
         }
+
         section {
             margin: 20px 0px;
         }
@@ -38,124 +41,114 @@
 
 <body>
     <div class="text-center">
-        <%if(this.profile.name) {%>
+        {{#if profile.name}}
         <strong>
-        <%this.profile.name%>
+            {{profile.name}}
         </strong>
-        <br />
-        <%}%>
-        <%if(this.profile.address) {%>
-        <%this.profile.address%>
-        <br />
-        <%}%>
-        <%if(this.profile.phone) {%>
+        <br /> {{/if}} {{#if profile.address}} {{profile.address}}
+        <br /> {{/if}} {{#if profile.phone }}
         <strong>Phone: </strong>
-        <%this.profile.phone%>
-        <br />
-        <%}%>
-        <%if(this.profile.email) {%>
+        {{profile.phone}}
+        <br /> {{/if}} {{#if profile.email }}
         <strong>Email: </strong>
-        <%this.profile.email%>
-        <br />
-        <%}%>
+        {{profile.email}}
+        <br /> {{/if}}
     </div>
     <section>
         <h2>Personal Profile</h2>
-        <%if(this.profile.short_description) {%>
-        <%this.profile.short_description%>
-        <%} else {%>
-        No personal profile.
-        <%}%>
+        {{#if profile.short_description}} {{this.profile.short_description}} {{/if}}
     </section>
-    <%if(this.education) {%>
-        <section>
+    {{#if education}}
+    <section>
         <h2>Education</h2>
-        <%for(var index in this.education){%>
-            <div class="row">
-                <div class="col">
-                    <%this.education[index].school%><br />
-                    <%this.education[index].start_date%> - <%this.education[index].end_date%>
-                </div>
-                <div class="col">
-                    <strong><%this.education[index].course%></strong><br />
-                    <%if(this.education[index].grade){%>Achieved a <%this.education[index].grade%><%}%>
-                    <p>
-                        Modules:
-                        <%for(var modind in this.education[index].modules){%>
-                            <%this.education[index].modules[modind]%>,&nbsp;
-                        <%}%>
-                    </p>
-                </div>
+        {{#each education}}
+        <div class="row">
+            <div class="col">
+                {{school}}
+                <br /> {{start_date}} - {{end_date}}
             </div>
-        <%}%>
+            <div class="col">
+                <strong>
+                    {{course}}
+                </strong>
+                <br /> {{#if grade}} Achieved a {{grade}} {{/if}}
+                <p>
+                    Modules:
+                    <ul>{{#each modules}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </p>
+            </div>
+        </div>
+        {{/each}}
     </section>
-    <%}%>
-    <%if(this.work_experience) {%>
-        <section>
+    {{/if}} {{#if work_experience}}
+    <section>
         <h2>Work Experience</h2>
-        <%for(var index in this.work_experience){%>
-            <div class="row">
-                <div class="col">
-                    <%this.work_experience[index].company%><br />
-                    <%this.work_experience[index].start_date%> - <%this.work_experience[index].end_date%>
-                </div>
-                <div class="col">
-                    <em><%this.work_experience[index].job_title%></em>
-                </div>
+        {{#each work_experience}}
+        <div class="row">
+            <div class="col">
+                {{company}}
+                <br /> {{start_date}} - {{end_date}}
             </div>
-            <div class="row">
-                <div class="col">
-                    <%this.work_experience[index].description%>
-                </div>
+            <div class="col">
+                <em>
+                    {{job_title}}
+                </em>
             </div>
-        <%}%>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{description}}
+            </div>
+        </div>
+        {{/each}}
     </section>
-    <%}%>
-    <%if(this.employment_history) {%>
-        <section>
+    {{/if}} {{#if employment_history}}
+    <section>
         <h2>Employment History</h2>
-        <%for(var index in this.employment_history){%>
-            <div class="row">
-                <div class="col">
-                    <%this.employment_history[index].company%><br />
-                    <%this.employment_history[index].start_date%> - <%this.employment_history[index].end_date%>
-                </div>
-                <div class="col">
-                    <em><%this.employment_history[index].job_title%></em>
-                </div>
+        {{#each employment_history}}
+        <div class="row">
+            <div class="col">
+                {{company}}
+                <br /> {{start_date}} - {{end_date}}
             </div>
-            <div class="row">
-                <div class="col">
-                    <%this.employment_history[index].description%>
-                </div>
+            <div class="col">
+                <em>
+                    {{job_title}}
+                </em>
             </div>
-        <%}%>
-    </section>
-    <%}%>
-    <%if(this.interests) {%>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{description}}
+            </div>
+        </div>
+        {{/each}} </section>
+    {{/if}} {{#if interests}}
     <section>
         <h2>Interests</h2>
-        <%for(var index in this.interests){%>
-            <div class="row">
-                <div class="col">
-                    <strong><%this.interests[index].title%></strong><br />
-                    <%this.interests[index].description%>
-                </div>
+        {{#each interests}}
+        <div class="row">
+            <div class="col">
+                <strong>
+                    {{title}}
+                </strong>
+                <br /> {{description}}
             </div>
-        <%}%>
-        <%if(this.additional_information) {%>
+        </div>
+        {{/each}} {{#if additional_information}}
         <br />
         <h3>Additional Information</h3>
-        <%this.additional_information%>
-        <%}%>        
+        {{additional_information}} {{/if}}
     </section>
-    <%}%>
-    <%if(this.references) {%>    
+    {{/if}} {{#if references}}
     <section>
         <h2>References</h2>
-        <%this.references%>
+        {{references}}
     </section>
-    <%}%>
+    {{/if}}
 </body>
 
 </html>

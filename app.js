@@ -4,33 +4,9 @@ const configuration = require("./config.json");
 const cv = require("./cv.json");
 
 const fs = require('fs');
+const handlebars = require('handlebars');
 const moment = require('moment');
 const templateDirectory = 'templates/';
-
-const TemplateEngine = function (html, options) {
-    var re = /<%([^%>]+)?%>/g,
-        reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g,
-        code = 'var r=[];\n',
-        cursor = 0,
-        match;
-    var add = function (line, js) {
-        js
-            ? (code += line.match(reExp)
-                ? line + '\n'
-                : 'r.push(' + line + ');\n')
-            : (code += line != ''
-                ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n'
-                : '');
-        return add;
-    }
-    while (match = re.exec(html)) {
-        add(html.slice(cursor, match.index))(match[1], true);
-        cursor = match.index + match[0].length;
-    }
-    add(html.substr(cursor, html.length - cursor));
-    code += 'return r.join("");';
-    return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
-}
 
 if (configuration.template) {
     loadTemplate(configuration.template);
@@ -46,13 +22,16 @@ function loadTemplate(templateName) {
     let footer = "";
     if (templateExists(templateName + '/header.html')) {
         header = getTemplateHeader(templateName);
-        header = TemplateEngine(header, cv);
+        let headerTemplate = handlebars.compile(header);
+        header = headerTemplate(cv);
     }
     if (templateExists(templateName + '/footer.html')) {
         footer = getTemplateFooter(templateName);
-        footer = TemplateEngine(footer, cv);
+        let footerTemplate = handlebars.compile(header);
+        footer = footerTemplate(cv);
     }
-    html = TemplateEngine(html, cv);
+    let template = handlebars.compile(html);
+    html = template(cv);
 
     conversion({
         html: html,
@@ -70,25 +49,18 @@ function loadTemplate(templateName) {
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
-        var output = fs.createWriteStream(`${dir}/cv-${moment().format('YYYYMMDD')}-${encode(moment().format('X'))}.pdf`)
-        pdf
-            .stream
-            .pipe(output);
-        conversion.kill();
+        let count = 0;
+        let name = "";
+        fs.readdir(dir, (err, files) => {
+            count = files.length;
+            if (count > 0) name = `(${count})`;
+            var output = fs.createWriteStream(`${dir}/cv-${moment().format('YYYYMMDD')}${name}.pdf`)
+            pdf
+                .stream
+                .pipe(output);
+            conversion.kill();
+        });
     });
-}
-
-var alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
-var base = alphabet.length;
-
-function encode(num) {
-    var encoded = '';
-    while (num) {
-        var remainder = num % base;
-        num = Math.floor(num / base);
-        encoded = alphabet[remainder].toString() + encoded;
-    }
-    return encoded;
 }
 
 function templateExists(templateName) {
