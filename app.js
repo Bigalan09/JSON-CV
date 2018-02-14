@@ -1,9 +1,10 @@
 'use strict';
 
-let configuration = require("./config.json");
-let cv = require("./cv.json");
+const configuration = require("./config.json");
+const cv = require("./cv.json");
 
-let fs = require('fs');
+const fs = require('fs');
+const moment = require('moment');
 const templateDirectory = 'templates/';
 
 const TemplateEngine = function (html, options) {
@@ -58,15 +59,36 @@ function loadTemplate(templateName) {
         paperSize: {
             format: 'A4'
         },
+        format: {
+            quality: 100
+        },
         header: header,
         footer: footer
     }, function (err, pdf) {
-        var output = fs.createWriteStream('cv.pdf')
+        var dir = './cv';
+
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+        var output = fs.createWriteStream(`${dir}/cv-${moment().format('YYYYMMDD')}-${encode(moment().format('X'))}.pdf`)
         pdf
             .stream
             .pipe(output);
         conversion.kill();
     });
+}
+
+var alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
+var base = alphabet.length;
+
+function encode(num) {
+    var encoded = '';
+    while (num) {
+        var remainder = num % base;
+        num = Math.floor(num / base);
+        encoded = alphabet[remainder].toString() + encoded;
+    }
+    return encoded;
 }
 
 function templateExists(templateName) {
