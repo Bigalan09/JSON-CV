@@ -8,14 +8,14 @@ npm install
 
 ## Configurations
 `config.json`
-```
+```json
 {
     "template": "darkknight"
 }
 ```
 
 `cv.json`
-```
+```json
 {
     "profile": {
         "name": "John Smith",
@@ -61,6 +61,5 @@ npm install
 ```
 
 ## Themes
-```
-
-```
+- darkknight
+- chronological
