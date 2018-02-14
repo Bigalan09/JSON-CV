@@ -1,0 +1,45 @@
+{
+    "profile": {
+        "name": "John Smith",
+        "phone": "",
+        "email": "john@gmail.com",
+        "address": "132, My Street, Bigtown BG23 4YZ England",
+        "social": {
+            "website": "https://bigalan.co.uk",
+            "github": "bigalan09",
+            "linkedin": ""
+        },
+        "short_description": ""
+    },
+    "education": [{
+        "school": "",
+        "course": "",
+        "modules": [""],
+        "start_date": "",
+        "end_date": ""
+    }],
+    "work_experience": [{
+        "company": "",
+        "job_title": "",
+        "start_date": "",
+        "end_date": "",
+        "description": ""
+    }],
+    "employment_history": [{
+        "company": "",
+        "job_title": "",
+        "start_date": "",
+        "end_date": "",
+        "description": ""
+    }],
+    "interests": [{
+        "title": "",
+        "description": ""
+    },
+    {
+        "title": "",
+        "description": ""
+    }],
+    "additional_information": "Created with https://github.com/bigalan09/JSON-CV",
+    "references": "Available on request."
+}

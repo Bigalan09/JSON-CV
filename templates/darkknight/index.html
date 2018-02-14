@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        body {
+            font-family: arial;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #888888;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
+</head>
+
+<body>
+        <h1>
+            <%this.profile.name%>
+        </h1>
+        <%this.profile.short_description%>
+        <br />
+        <div style="color: #1177ff;">
+            <strong>Phone: </strong>
+            <%this.profile.phone%>
+        </div>
+
+        <a href="#skills">My Skills</a>
+
+        <div id="skills" style="margin-top: 5000px;">
+            <h2>Skills</h2>
+        </div>
+</body>
+
+</html>

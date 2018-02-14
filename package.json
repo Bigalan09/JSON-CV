@@ -1,0 +1,28 @@
+{
+  "name": "json-cv",
+  "version": "1.0.0",
+  "description": "Create a Curriculum vitae (CV) using JSON . Outputs as HTML and PDF.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bigalan09/JSON-CV.git"
+  },
+  "keywords": [
+    "cv",
+    "resume",
+    "json"
+  ],
+  "author": "Alan Gardner (bigalan09)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bigalan09/JSON-CV/issues"
+  },
+  "homepage": "https://github.com/Bigalan09/JSON-CV#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "phantom-html-to-pdf": "^0.5.5"
+  }
+}
