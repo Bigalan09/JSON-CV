@@ -6,37 +6,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
     <style>
         body {
-            font-family: arial;
-            font-size: 16px;
-            color: #333333;
+            font-size: 14px;            
+        }
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
         }
 
-        h1 {
-            font-size: 20px;
-            color: #888888;
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        section {
+            margin: 16px 0px;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
 </head>
 
 <body>
-        <h1>
-            <%this.profile.name%>
-        </h1>
-        <%this.profile.short_description%>
+    <div class="text-center">
+        <%if(this.profile.name) {%>
+        <strong>
+        <%this.profile.name%>
+        </strong>
         <br />
-        <div style="color: #1177ff;">
-            <strong>Phone: </strong>
-            <%this.profile.phone%>
-        </div>
-
-        <a href="#skills">My Skills</a>
-
-        <div id="skills" style="margin-top: 5000px;">
-            <h2>Skills</h2>
-        </div>
+        <%}%>
+        <%if(this.profile.address) {%>
+        <%this.profile.address%>
+        <br />
+        <%}%>
+        <%if(this.profile.phone) {%>
+        <strong>Phone: </strong>
+        <%this.profile.phone%>
+        <br />
+        <%}%>
+        <%if(this.profile.email) {%>
+        <strong>Email: </strong>
+        <%this.profile.email%>
+        <br />
+        <%}%>
+    </div>
+    <section>
+        <h2>Personal Profile</h2>
+        <%if(this.profile.short_description) {%>
+        <%this.profile.short_description%>
+        <%} else {%>
+        No personal profile.
+        <%}%>
+    </section>
+    <%if(this.education) {%>
+        <section>
+        <h2>Education</h2>
+        <%for(var index in this.education){%>
+            <div class="row">
+                <div class="col">
+                    <%this.education[index].school%><br />
+                    <%this.education[index].start_date%> - <%this.education[index].end_date%>
+                </div>
+                <div class="col">
+                    <strong><%this.education[index].course%></strong><br />
+                    <%if(this.education[index].grade){%>Achieved a <%this.education[index].grade%><%}%>
+                    <p>
+                        Modules:
+                        <%for(var modind in this.education[index].modules){%>
+                            <%this.education[index].modules[modind]%>,&nbsp;
+                        <%}%>
+                    </p>
+                </div>
+            </div>
+        <%}%>
+    </section>
+    <%}%>
+    <%if(this.work_experience) {%>
+        <section>
+        <h2>Work Experience</h2>
+        <%for(var index in this.work_experience){%>
+            <div class="row">
+                <div class="col">
+                    <%this.work_experience[index].company%>
+                </div>
+                <div class="col">
+                    <%this.work_experience[index].job_title%>
+                </div>
+            </div>
+        <%}%>
+    </section>
+    <%}%>
+    <%if(this.employment_history) {%>
+        <section>
+        <h2>Employment History</h2>
+        <%for(var index in this.employment_history){%>
+            <div class="row">
+                <div class="col">
+                    <%this.employment_history[index].company%>
+                </div>
+                <div class="col">
+                    <%this.employment_history[index].job_title%>
+                </div>
+            </div>
+        <%}%>
+    </section>
+    <%}%>
+    <%if(this.interests) {%>
+    <section>
+        <h2>Interests</h2>
+        <%for(var index in this.interests){%>
+            <div class="row">
+                <div class="col">
+                    <strong><%this.interests[index].title%></strong><br />
+                    <%this.interests[index].description%>
+                </div>
+            </div>
+        <%}%>
+        <%if(this.additional_information) {%>
+        <br />
+        <h3>Additional Information</h3>
+        <%this.additional_information%>
+        <%}%>        
+    </section>
+    <%}%>
+    <%if(this.references) {%>    
+    <section>
+        <h2>References</h2>
+        <%this.references%>
+    </section>
+    <%}%>
 </body>
 
 </html>

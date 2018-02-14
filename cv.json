@@ -1,7 +1,7 @@
 {
     "profile": {
         "name": "John Smith",
-        "phone": "",
+        "phone": "01443 666333",
         "email": "john@gmail.com",
         "address": "132, My Street, Bigtown BG23 4YZ England",
         "social": {
@@ -9,36 +9,37 @@
             "github": "bigalan09",
             "linkedin": ""
         },
-        "short_description": ""
+        "short_description": "if statements are life, if statements are love."
     },
     "education": [{
-        "school": "",
-        "course": "",
-        "modules": [""],
-        "start_date": "",
-        "end_date": ""
+        "school": "University of Bigtown",
+        "course": "BSc (Hons) Computer Science",
+        "grade": "First",
+        "modules": ["parallel and concurrent programming", "distributed computing"],
+        "start_date": "2009",
+        "end_date": "2013"
     }],
     "work_experience": [{
-        "company": "",
-        "job_title": "",
-        "start_date": "",
-        "end_date": "",
+        "company": "University of Smalltown",
+        "job_title": "Research Assistant",
+        "start_date": "2012",
+        "end_date": "2012",
         "description": ""
     }],
     "employment_history": [{
-        "company": "",
-        "job_title": "",
-        "start_date": "",
-        "end_date": "",
+        "company": "Tech Company A",
+        "job_title": "Senior Software Developer",
+        "start_date": "2015",
+        "end_date": "2018",
         "description": ""
     }],
     "interests": [{
-        "title": "",
-        "description": ""
+        "title": "Work",
+        "description": "NodeJS, C# (.NET)"
     },
     {
-        "title": "",
-        "description": ""
+        "title": "Sport",
+        "description": "Squash, rugby"
     }],
     "additional_information": "Created with https://github.com/bigalan09/JSON-CV",
     "references": "Available on request."
