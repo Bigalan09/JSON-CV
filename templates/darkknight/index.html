@@ -93,10 +93,16 @@
         <%for(var index in this.work_experience){%>
             <div class="row">
                 <div class="col">
-                    <%this.work_experience[index].company%>
+                    <%this.work_experience[index].company%><br />
+                    <%this.work_experience[index].start_date%> - <%this.work_experience[index].end_date%>
                 </div>
                 <div class="col">
-                    <%this.work_experience[index].job_title%>
+                    <em><%this.work_experience[index].job_title%></em>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <%this.work_experience[index].description%>
                 </div>
             </div>
         <%}%>
@@ -108,10 +114,16 @@
         <%for(var index in this.employment_history){%>
             <div class="row">
                 <div class="col">
-                    <%this.employment_history[index].company%>
+                    <%this.employment_history[index].company%><br />
+                    <%this.employment_history[index].start_date%> - <%this.employment_history[index].end_date%>
                 </div>
                 <div class="col">
-                    <%this.employment_history[index].job_title%>
+                    <em><%this.employment_history[index].job_title%></em>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <%this.employment_history[index].description%>
                 </div>
             </div>
         <%}%>
