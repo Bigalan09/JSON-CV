@@ -16,7 +16,7 @@ function loadTemplate(templateName) {
     if (!templateExists(templateName)) {
         console.log(`Template (${templateName}) does not exist.`);
     }
-    let conversion = require("phantom-html-to-pdf")();
+    
     let html = getTemplate(templateName);
     let header = "";
     let footer = "";
@@ -33,18 +33,6 @@ function loadTemplate(templateName) {
     let template = handlebars.compile(html);
     html = template(cv);
 
-
-    let options = {
-        screenSize: {
-            width: 2480,
-            height: 3508
-        },
-        shotSize: {
-            width: 2480,
-            height: 'all'
-        },
-        quality: 100
-    };
     if (configuration.saveHTML) {
         fs
             .writeFile("cv.html", html, function (err) {
