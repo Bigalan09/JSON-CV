@@ -1,7 +1,7 @@
 'use strict';
 
-const configuration = require("./config.json");
-const cv = require("./cv.json");
+const configuration = require("../config.json");
+const cv = require("../" + configuration.cvfile);
 
 const fs = require('fs');
 const handlebars = require('handlebars');
@@ -33,17 +33,29 @@ function loadTemplate(templateName) {
     let template = handlebars.compile(html);
     html = template(cv);
 
-    conversion({
-        html: html,
-        paperSize: {
-            format: 'A4'
+
+    let options = {
+        screenSize: {
+            width: 2480,
+            height: 3508
         },
-        format: {
-            quality: 100
+        shotSize: {
+            width: 2480,
+            height: 'all'
         },
-        header: header,
-        footer: footer
-    }, function (err, pdf) {
+        quality: 100
+    };
+    if (configuration.saveHTML) {
+        fs
+            .writeFile("cv.html", html, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+    }
+    if (configuration.saveImage) {}
+    if (configuration.savePDF) {
+        var path = '';
         var dir = './cv';
 
         if (!fs.existsSync(dir)) {
@@ -53,14 +65,30 @@ function loadTemplate(templateName) {
         let name = "";
         fs.readdir(dir, (err, files) => {
             count = files.length;
-            if (count > 0) name = `(${count})`;
-            var output = fs.createWriteStream(`${dir}/cv-${moment().format('YYYYMMDD')}${name}.pdf`)
-            pdf
-                .stream
-                .pipe(output);
-            conversion.kill();
+            if (count > 0)
+                name = `(${count})`;
+            path = `${dir}/cv-${moment().format('YYYYMMDD')}${name}.pdf`;
         });
-    });
+
+        let http = require('http');
+        let puppeteer = require('puppeteer');
+
+        const server = http.createServer((req, res) => res.end(html)).listen(1337, async () => {
+
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+            await page.goto('http://localhost:1337', );
+            await page.waitFor(5000);
+            await page.pdf({
+                path: path,
+                format: 'A4'
+            });
+
+            await browser.close();
+            server.close();
+        });
+
+    }
 }
 
 function templateExists(templateName) {

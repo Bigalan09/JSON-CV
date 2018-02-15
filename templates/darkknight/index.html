@@ -40,115 +40,117 @@
 </head>
 
 <body>
-    <div class="text-center">
-        {{#if profile.name}}
-        <strong>
-            {{profile.name}}
-        </strong>
-        <br /> {{/if}} {{#if profile.address}} {{profile.address}}
-        <br /> {{/if}} {{#if profile.phone }}
-        <strong>Phone: </strong>
-        {{profile.phone}}
-        <br /> {{/if}} {{#if profile.email }}
-        <strong>Email: </strong>
-        {{profile.email}}
-        <br /> {{/if}}
+    <div class="container">
+        <div class="text-center">
+            {{#if profile.name}}
+            <strong>
+                {{profile.name}}
+            </strong>
+            <br /> {{/if}} {{#if profile.address}} {{profile.address}}
+            <br /> {{/if}} {{#if profile.phone }}
+            <strong>Phone: </strong>
+            {{profile.phone}}
+            <br /> {{/if}} {{#if profile.email }}
+            <strong>Email: </strong>
+            {{profile.email}}
+            <br /> {{/if}}
+        </div>
+        <section>
+            <h2>Personal Profile</h2>
+            {{#if profile.short_description}} {{this.profile.short_description}} {{/if}}
+        </section>
+        {{#if education}}
+        <section>
+            <h2>Education</h2>
+            {{#each education}}
+            <div class="row">
+                <div class="col">
+                    {{school}}
+                    <br /> {{start_date}} - {{end_date}}
+                </div>
+                <div class="col">
+                    <strong>
+                        {{course}}
+                    </strong>
+                    <br /> {{#if grade}} Achieved a {{grade}} {{/if}}
+                    <p>
+                        Modules:
+                        <ul>{{#each modules}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            {{/each}}
+        </section>
+        {{/if}} {{#if work_experience}}
+        <section>
+            <h2>Work Experience</h2>
+            {{#each work_experience}}
+            <div class="row">
+                <div class="col">
+                    {{company}}
+                    <br /> {{start_date}} - {{end_date}}
+                </div>
+                <div class="col">
+                    <em>
+                        {{job_title}}
+                    </em>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{description}}
+                </div>
+            </div>
+            {{/each}}
+        </section>
+        {{/if}} {{#if employment_history}}
+        <section>
+            <h2>Employment History</h2>
+            {{#each employment_history}}
+            <div class="row">
+                <div class="col">
+                    {{company}}
+                    <br /> {{start_date}} - {{end_date}}
+                </div>
+                <div class="col">
+                    <em>
+                        {{job_title}}
+                    </em>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{description}}
+                </div>
+            </div>
+            {{/each}} </section>
+        {{/if}} {{#if interests}}
+        <section>
+            <h2>Interests</h2>
+            {{#each interests}}
+            <div class="row">
+                <div class="col">
+                    <strong>
+                        {{title}}
+                    </strong>
+                    <br /> {{description}}
+                </div>
+            </div>
+            {{/each}} {{#if additional_information}}
+            <br />
+            <h3>Additional Information</h3>
+            {{additional_information}} {{/if}}
+        </section>
+        {{/if}} {{#if references}}
+        <section>
+            <h2>References</h2>
+            {{references}}
+        </section>
+        {{/if}}
     </div>
-    <section>
-        <h2>Personal Profile</h2>
-        {{#if profile.short_description}} {{this.profile.short_description}} {{/if}}
-    </section>
-    {{#if education}}
-    <section>
-        <h2>Education</h2>
-        {{#each education}}
-        <div class="row">
-            <div class="col">
-                {{school}}
-                <br /> {{start_date}} - {{end_date}}
-            </div>
-            <div class="col">
-                <strong>
-                    {{course}}
-                </strong>
-                <br /> {{#if grade}} Achieved a {{grade}} {{/if}}
-                <p>
-                    Modules:
-                    <ul>{{#each modules}}
-                        <li>{{this}}</li>
-                        {{/each}}
-                    </ul>
-                </p>
-            </div>
-        </div>
-        {{/each}}
-    </section>
-    {{/if}} {{#if work_experience}}
-    <section>
-        <h2>Work Experience</h2>
-        {{#each work_experience}}
-        <div class="row">
-            <div class="col">
-                {{company}}
-                <br /> {{start_date}} - {{end_date}}
-            </div>
-            <div class="col">
-                <em>
-                    {{job_title}}
-                </em>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {{description}}
-            </div>
-        </div>
-        {{/each}}
-    </section>
-    {{/if}} {{#if employment_history}}
-    <section>
-        <h2>Employment History</h2>
-        {{#each employment_history}}
-        <div class="row">
-            <div class="col">
-                {{company}}
-                <br /> {{start_date}} - {{end_date}}
-            </div>
-            <div class="col">
-                <em>
-                    {{job_title}}
-                </em>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {{description}}
-            </div>
-        </div>
-        {{/each}} </section>
-    {{/if}} {{#if interests}}
-    <section>
-        <h2>Interests</h2>
-        {{#each interests}}
-        <div class="row">
-            <div class="col">
-                <strong>
-                    {{title}}
-                </strong>
-                <br /> {{description}}
-            </div>
-        </div>
-        {{/each}} {{#if additional_information}}
-        <br />
-        <h3>Additional Information</h3>
-        {{additional_information}} {{/if}}
-    </section>
-    {{/if}} {{#if references}}
-    <section>
-        <h2>References</h2>
-        {{references}}
-    </section>
-    {{/if}}
 </body>
 
 </html>

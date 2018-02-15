@@ -4,6 +4,9 @@
   "description": "Create a Curriculum vitae (CV) using JSON . Outputs as HTML and PDF.",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/app.js --exec babel-node",
+    "build": "babel src -d dist",
+    "serve": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +28,17 @@
     "fs": "^0.0.1-security",
     "handlebars": "^4.0.11",
     "moment": "^2.20.1",
-    "phantom-html-to-pdf": "^0.5.5"
+    "puppeteer": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "nodemon": "^1.11.0"
   }
 }

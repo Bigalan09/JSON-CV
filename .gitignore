@@ -1,5 +1,6 @@
 #CV directory
 cv/
+dist/
 
 # Logs
 logs
