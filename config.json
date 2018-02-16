@@ -1,8 +1,22 @@
 {
     "template": "darkknight",
-    "cvfile": "cv.json",
-    "saveHTML": true,
-    "saveImage": true,
-    "savePDF": true,
-    "saveDOCX": true    
+    "port": 3344,
+    "cv": {
+        "enabled": true,
+        "data": "cv.json",
+        "dir": "cv",
+        "saveHTML": true,
+        "saveImage": true,
+        "savePDF": true,
+        "saveDOCX": true
+    },
+    "cover": {
+        "enabled": true,
+        "dir": "cover",
+        "data": "cover.json",
+        "saveHTML": true,
+        "saveImage": true,
+        "savePDF": true,
+        "saveDOCX": true
+    }
 }
