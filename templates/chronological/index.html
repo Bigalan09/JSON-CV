@@ -6,166 +6,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
-    <STYLE TYPE="text/css">
-		@page { size: 8.5in 11in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 0.7in; margin-bottom: 0.7in }
-		@page:first { margin-top: 0.67in; margin-bottom: 0.7in }
-		P { margin-left: 0.11in; margin-top: 0.04in; margin-bottom: 0.04in; direction: ltr; line-height: 0.15in; text-align: justify; widows: 2; orphans: 2 }
-		P.western { font-family: "Arial", serif; so-language: en-US }
-		P.cjk { so-language: en-US }
-		H1 { margin-left: 0.11in; margin-bottom: 0.08in; direction: ltr; line-height: 0.15in; widows: 2; orphans: 2; page-break-after: auto }
-		H1.western { font-family: "Arial Black", serif; font-size: 11pt; so-language: en-US; font-weight: normal }
-		H1.cjk { font-size: 11pt; so-language: en-US; font-weight: normal }
-		H1.ctl { font-family: "Arial"; font-size: 11pt; font-weight: normal }
-		H2 { margin-left: 0.11in; margin-top: 0.08in; margin-bottom: 0.04in; direction: ltr; line-height: 0.15in; widows: 2; orphans: 2; page-break-after: auto }
-		H2.western { font-family: "Arial", serif; font-size: 11pt; so-language: en-US; font-weight: normal }
-		H2.cjk { font-family: "Times New Roman"; font-size: 11pt; so-language: en-US; font-weight: normal }
-		H2.ctl { font-size: 11pt; font-weight: normal }
-		P.bulleted-list-western { font-family: "Arial", serif; so-language: en-US }
-		P.bulleted-list-cjk { so-language: en-US }
-	</STYLE>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <style>
+        html,
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 15px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 8px 0px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 8px 0px 6px 0px;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 8px 0px 6px 0px;
+        }
+
+        section {
+            margin: 25px 0px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
-<TABLE WIDTH=672 CELLPADDING=7 CELLSPACING=0 STYLE="page-break-before: always">
-		<COL WIDTH='30%'>
-		<COL WIDTH='70%'>
-		<TR VALIGN=TOP>
-			<TD ROWSPAN=12 WIDTH='30%' STYLE="border-top: none; border-bottom: none; border-left: none; border-right: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0in; padding-right: 0.08in">
-				<% if(this.profile.name){%>
-					<P LANG="en-US" ALIGN=RIGHT STYLE="margin-left: 0in; margin-top: 0in"><A NAME="_GoBack"></A>
-					<%this.profile.name%>
-					</P>
-					<BR>
-				<%}%>
-				
-				<% if(this.profile.address){%>
-					<P LANG="en-US" ALIGN=RIGHT STYLE="margin-left: 0in; margin-top: 0in; margin-bottom: 0in">
-						<%this.profile.address%>
-					</P>
-					<BR>
-				<%}%>
-				
-				<% if(this.profile.phone){%>
-					<P LANG="en-US" ALIGN=RIGHT STYLE="margin-left: 0in; margin-top: 0in; margin-bottom: 0in">
-					<%this.profile.phone%>
-					</P>
-					<BR>
-				<%}%>
-				
-				<% if(this.profile.email){%>
-					<P LANG="en-US" ALIGN=RIGHT STYLE="margin-left: 0in; margin-top: 0in; margin-bottom: 0in">
-					<%this.profile.email%>
-					</P>
-					<BR>
-				<%}%>
-				
-				<% if(this.profile.social){%>
-					<% for(var index in this.profile.social){%>
-						<P LANG="en-US" ALIGN=RIGHT STYLE="margin-left: 0in; margin-top: 0in; margin-bottom: 0in">
-						<%this.profile.social[index]%>
-						</P>
-						<BR>
-					<%}%>
-				<%}%>
-				
-				<P LANG="en-US" CLASS="western" ALIGN=LEFT STYLE="margin-left: 0in; margin-top: 0in">
-				<BR>
-				</P>
-			</TD>
-			
-			<% if(this.profile.short_description){%>
-			<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-				<H1 LANG="en-US" CLASS="western">Objective</H1>
-				<P LANG="en-US" CLASS="western"><%this.profile.short_description%></P>
-			</TD>
-			<%}%>
-		</TR>
-		
-		<% if(this.employment_history){%>
-		<TR VALIGN=TOP>
-			<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-				<H1 LANG="en-US" CLASS="western">Employment History</H1>
-			</TD>
-		</TR>
-		<% for(var index in this.employment_history){%>
-		<TR VALIGN=TOP>
-			<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-				<H2 LANG="en-US" CLASS="western"><%this.employment_history[index].job_title%></H2>
-				<P LANG="en-US" CLASS="western"><%this.employment_history[index].start_date%> - <%this.employment_history[index].end_date%> <%this.employment_history[index].company%></P>
-				<P LANG="en-US" CLASS="western"><%this.employment_history[index].description%></P>
-			</TD>
-		</TR>
-		<%}%>
-		
-		<%}%>
-		
-		<% if(this.education){%>
-		<TR VALIGN=TOP>
-			<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-				<H1 LANG="en-US" CLASS="western">Education</H1>
-			</TD>
-		</TR>
-		<% for(var index in this.education){%>
-		<TR VALIGN=TOP>
-			<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-				<P LANG="en-US" CLASS="western"><%this.education[index].start_date%> - <%this.education[index].end_date%>  <%this.education[index].school%></P>
-				<P LANG="en-US" CLASS="western"><%this.education[index].course%></P>
-				<UL>
-					<% for(var mindex in this.education[index].modules){%>
-						<LI><P LANG="en-US" CLASS="bulleted-list-western"><%this.education[index].modules[mindex]%></P>
-					<%}%>
-				</UL>
-			</TD>
-		</TR>
-		<%}%>
-		
-		<%}%>
-		
-		<% if(this.work_experience){%>
-			<TR VALIGN=TOP>
-				<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-					<H1 LANG="en-US" CLASS="western">Work Experience</H1>
-				</TD>
-			</TR>
-			
-		<% for(var index in this.work_experience){%>
-			<TR VALIGN=TOP>
-				<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-					<H2 LANG="en-US" CLASS="western"><%this.work_experience[index].job_title%></H2>
-					<P LANG="en-US" CLASS="western"><%this.work_experience[index].start_date%> - <%this.work_experience[index].end_date%> <%this.work_experience[index].company%></P>
-					<P LANG="en-US" CLASS="western"><%this.work_experience[index].description%></P>
-				</TD>
-			</TR>
-		<%}%>
-			
-		<%}%>
-		
-		
-		<% if(this.interests){%>
-			<TR VALIGN=TOP>
-				<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-					<H1 LANG="en-US" CLASS="western">Interests</H1>
-				</TD>
-			</TR>
-			
-		<% for(var index in this.interests){%>
-			<TR VALIGN=TOP>
-				<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-					<H2 LANG="en-US" CLASS="western"><%this.interests[index].title%></H2>
-					<P LANG="en-US" CLASS="western"><%this.interests[index].description%></P>
-				</TD>
-			</TR>
-		<%}%>
-			
-		<%}%>
-		
-		<TR VALIGN=TOP>
-			<TD WIDTH='70%' STYLE="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0in">
-				<P LANG="en-US" CLASS="western"><%this.references%></P>
-			</TD>
-		</TR>
-	</TABLE>
+    <div class="container">
+        <div class="text-center">
+            {{#if profile.name}}
+            <h1>
+                {{profile.name}}
+            </h1>
+            {{/if}} {{#if profile.address}} {{profile.address}}
+            <br /> {{/if}} {{#if profile.phone }}
+            <strong>Phone: </strong>
+            {{profile.phone}}
+            <br /> {{/if}} {{#if profile.email }}
+            <strong>Email: </strong>
+            {{profile.email}}
+            <br /> {{/if}}
+        </div>
+        <section>
+            <h2>Personal Profile</h2>
+            {{#if profile.short_description}} {{this.profile.short_description}} {{/if}}
+        </section>
+        {{#if education}}
+        <section>
+            <h2>Education</h2>
+            {{#each education}}
+            <div class="row">
+                <div class="col">
+                    <h3>{{school}}</h3>
+                    <em>{{start_date}} - {{end_date}}</em>
+                </div>
+                <div class="col">
+                    <strong>
+                        {{course}}
+                    </strong>
+                    <br /> {{#if grade}} Achieved a {{grade}} {{/if}} {{#ifObject modules}}
+                    <p>
+                        Modules:
+                        <ul>{{#each modules}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </p>
+                    {{else}} {{#if modules}}
+                    <p>
+                        Modules: {{modules}}
+                    </p>
+                    {{/if}} {{/ifObject}}
+                </div>
+            </div>
+            {{/each}}
+        </section>
+        {{/if}} {{#if work_experience}}
+        <section>
+            <h2>Work Experience</h2>
+            {{#each work_experience}}
+            <div class="row mt-4 mb-4">
+                <div class="col">
+                    <h3>{{company}}</h3>
+                    <em>{{start_date}} - {{end_date}}</em>
+                </div>
+                <div class="col">
+                    <em>
+                        {{job_title}}
+                    </em>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{description}}
+                </div>
+            </div>
+            {{/each}}
+        </section>
+        {{/if}} {{#if employment_history}}
+        <section>
+            <h2>Employment History</h2>
+            {{#each employment_history}}
+            <div class="row mt-4 mb-4">
+                <div class="col">
+                    <h3>{{company}}</h3>
+                    <em>{{start_date}} - {{end_date}}</em>
+                </div>
+                <div class="col">
+                    <em>
+                        {{job_title}}
+                    </em>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{description}}
+                </div>
+            </div>
+            {{/each}} </section>
+        {{/if}} {{#if interests}}
+        <section>
+            <h2>Interests</h2>
+            {{#each interests}}
+            <div class="row mt-4 mb-4">
+                <div class="col">
+                    <strong>
+                        {{title}}
+                    </strong>
+                    <br /> {{description}}
+                </div>
+            </div>
+            {{/each}} {{#if additional_information}}
+            <br />
+            <h3>Additional Information</h3>
+            {{additional_information}} {{/if}}
+        </section>
+        {{/if}} {{#if references}}
+        <section>
+            <h2>References</h2>
+            {{references}}
+        </section>
+        {{/if}}
+    </div>
 </body>
 
 </html>

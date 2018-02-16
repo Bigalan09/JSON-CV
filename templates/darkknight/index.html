@@ -7,18 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style>
         html,
         body {
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             font-size: 15px;
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: bold;
-            margin: 8px 0px;
+            margin: 8px 0px 12px;
         }
 
         h2 {
@@ -44,26 +45,32 @@
             margin: 0;
             padding: 0;
         }
+        .address {
+            color: #888888;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="text-center">
-            {{#if profile.name}}
-            <h1>
-                {{profile.name}}
-            </h1>
-            {{/if}} {{#if profile.address}} {{profile.address}}
-            <br /> {{/if}} {{#if profile.phone }}
-            <strong>Phone: </strong>
-            {{profile.phone}}
-            <br /> {{/if}} {{#if profile.email }}
-            <strong>Email: </strong>
-            {{profile.email}}
-            <br /> {{/if}}
+        <div class="container-fluid text-center">
+            {{#with profile}} 
+            {{#if name}}<h1>{{name}}</h1>{{/if}}
+            {{#if address}} <div class="address">{{address}}</div>{{/if}}
+            <div class="row">
+                    <div class="col">&nbsp;</div>
+                    {{#if phone}} <div class="col phone"><span class="fa fa-phone"></span> {{phone}}</div>{{/if}}
+            {{#if email}} <div class="col email"><span class="fa fa-envelope"></span> {{email}}</div>{{/if}}
+            {{#with social}}
+            {{#if website}} <div class="col website"><span class="fa fa-home"></span> {{website}}</div>{{/if}}
+            {{#if github}} <div class="col github"><span class="fa fa-github"></span> {{github}}</div>{{/if}}
+            {{#if linkedin}} <div class="col linkedin"><span class="fa fa-linkedin"></span> {{linkedin}}</div>{{/if}}
+            {{/with}}
+            {{/with}}
+                <div class="col">&nbsp;</div>
+            </div>
         </div>
-        <section>
+        <div class="container">
+                <section>
             <h2>Personal Profile</h2>
             {{#if profile.short_description}} {{this.profile.short_description}} {{/if}}
         </section>
@@ -71,7 +78,7 @@
         <section>
             <h2>Education</h2>
             {{#each education}}
-            <div class="row">
+            <div class="row mt-4 mb-4">
                 <div class="col">
                     <h3>{{school}}</h3>
                     <em>{{start_date}} - {{end_date}}</em>
