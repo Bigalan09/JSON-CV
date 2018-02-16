@@ -2,15 +2,24 @@
 Create a Curriculum vitae (CV) using JSON.  Outputs as HTML and PDF.
 
 ## Install
-```
+```bash
 npm install
+```
+
+## Generation
+```bash
+npm run generate
 ```
 
 ## Configurations
 `config.json`
 ```json
 {
-    "template": "darkknight"
+    "template": "darkknight",
+    "cvfile": "cv.json",
+    "saveHTML": true,
+    "saveImage": true,
+    "savePDF": true
 }
 ```
 
