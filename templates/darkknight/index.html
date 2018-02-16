@@ -56,18 +56,16 @@
             {{#with profile}} 
             {{#if name}}<h1>{{name}}</h1>{{/if}}
             {{#if address}} <div class="address">{{address}}</div>{{/if}}
-            <div class="row">
-                    <div class="col">&nbsp;</div>
-                    {{#if phone}} <div class="col phone"><span class="fa fa-phone"></span> {{phone}}</div>{{/if}}
-            {{#if email}} <div class="col email"><span class="fa fa-envelope"></span> {{email}}</div>{{/if}}
-            {{#with social}}
-            {{#if website}} <div class="col website"><span class="fa fa-home"></span> {{website}}</div>{{/if}}
-            {{#if github}} <div class="col github"><span class="fa fa-github"></span> {{github}}</div>{{/if}}
-            {{#if linkedin}} <div class="col linkedin"><span class="fa fa-linkedin"></span> {{linkedin}}</div>{{/if}}
-            {{/with}}
-            {{/with}}
-                <div class="col">&nbsp;</div>
-            </div>
+            <ul class="list-inline">
+                {{#if phone}} <li class="list-inline-item"><span class="fa fa-phone"></span> {{phone}}</li>{{/if}}
+                {{#if email}} <li class="list-inline-item"><span class="fa fa-envelope"></span> {{email}}</li>{{/if}}
+                {{#with social}}
+                    {{#if website}}<li class="list-inline-item"><span class="fa fa-home"></span> {{website}}</li>{{/if}}
+                    {{#if github}}<li class="list-inline-item"><span class="fa fa-github"></span> {{github}}</li>{{/if}}
+                    {{#if linkedin}}<li class="list-inline-item"><span class="fa fa-linkedin"></span> {{linkedin}}</li>{{/if}}
+                    {{/with}}
+                {{/with}}
+            </ul>
         </div>
         <div class="container">
                 <section>
