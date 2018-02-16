@@ -18,7 +18,7 @@
         h1 {
             font-size: 22px;
             font-weight: bold;
-            margin: 22px 0px 8px 0px;
+            margin: 8px 0px;
         }
 
         h2 {
@@ -51,10 +51,10 @@
     <div class="container">
         <div class="text-center">
             {{#if profile.name}}
-            <strong>
+            <h1>
                 {{profile.name}}
-            </strong>
-            <br /> {{/if}} {{#if profile.address}} {{profile.address}}
+            </h1>
+            {{/if}} {{#if profile.address}} {{profile.address}}
             <br /> {{/if}} {{#if profile.phone }}
             <strong>Phone: </strong>
             {{profile.phone}}
