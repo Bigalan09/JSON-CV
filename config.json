@@ -2,6 +2,6 @@
     "template": "darkknight",
     "cvfile": "cv.json",
     "saveHTML": true,
-    "saveImage": false,
+    "saveImage": true,
     "savePDF": true
 }

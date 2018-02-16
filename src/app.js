@@ -8,6 +8,22 @@ const handlebars = require('handlebars');
 const moment = require('moment');
 const templateDirectory = 'templates/';
 
+handlebars.registerHelper('ifObject', function (item, options) {
+    if (typeof item === "object") {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+});
+
+handlebars.registerHelper('ifArray', function (item, options) {
+    if (typeof item === Array) {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+});
+
 if (configuration.template) {
     loadTemplate(configuration.template);
 }
@@ -16,7 +32,7 @@ function loadTemplate(templateName) {
     if (!templateExists(templateName)) {
         console.log(`Template (${templateName}) does not exist.`);
     }
-    
+
     let html = getTemplate(templateName);
     let header = "";
     let footer = "";
@@ -33,50 +49,54 @@ function loadTemplate(templateName) {
     let template = handlebars.compile(html);
     html = template(cv);
 
+    let dir = `./cv/${moment().format('X')}`;
+    let path = `${dir}/cv`;
+    if (!fs.existsSync('./cv/')) {
+        fs.mkdirSync('./cv/');
+    }
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+
     if (configuration.saveHTML) {
         fs
-            .writeFile("cv.html", html, function (err) {
+            .writeFile(`${path}.html`, html, function (err) {
                 if (err) {
                     return console.log(err);
                 }
             });
     }
-    if (configuration.saveImage) {}
-    if (configuration.savePDF) {
-        var path = '';
-        var dir = './cv';
 
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
+    let http = require('http');
+    let puppeteer = require('puppeteer');
+
+    const server = http.createServer((req, res) => res.end(html)).listen(1337, async() => {
+
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto('http://localhost:1337', {waitUntil: 'networkidle0'});
+        await page.waitFor(500);
+
+        if (configuration.saveImage) {
+            await page.screenshot({path: `${path}.png`, fullPage: true});
         }
-        let count = 0;
-        let name = "";
-        fs.readdir(dir, (err, files) => {
-            count = files.length;
-            if (count > 0)
-                name = `(${count})`;
-            path = `${dir}/cv-${moment().format('YYYYMMDD')}${name}.pdf`;
-        });
-
-        let http = require('http');
-        let puppeteer = require('puppeteer');
-
-        const server = http.createServer((req, res) => res.end(html)).listen(1337, async () => {
-
-            const browser = await puppeteer.launch();
-            const page = await browser.newPage();
-            await page.goto('http://localhost:1337', );
-            await page.waitFor(5000);
+        if (configuration.savePDF) {
             await page.pdf({
-                path: path,
+                path: `${path}.pdf`,
+                footerTemplate: footer,
+                headerTemplate: header,
+                margin: {
+                    top: '60px',
+                    bottom: '60px'
+                },
                 format: 'A4'
             });
+        }
 
-            await browser.close();
-            server.close();
-        });
+        await browser.close();
+        server.close();
+    });
 
-    }
 }
 
 function templateExists(templateName) {

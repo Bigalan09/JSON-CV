@@ -13,28 +13,36 @@
         body {
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 15px;
-            line-height: 26px;
         }
 
         h1 {
             font-size: 22px;
             font-weight: bold;
+            margin: 22px 0px 8px 0px;
         }
 
         h2 {
             font-size: 18px;
             font-weight: bold;
             text-decoration: underline;
+            margin: 8px 0px 6px 0px;
         }
 
         h3 {
             font-size: 15px;
             font-weight: bold;
             text-decoration: underline;
+            margin: 8px 0px 6px 0px;
         }
 
         section {
-            margin: 20px 0px;
+            margin: 25px 0px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
@@ -65,14 +73,14 @@
             {{#each education}}
             <div class="row">
                 <div class="col">
-                    {{school}}
-                    <br /> {{start_date}} - {{end_date}}
+                    <h3>{{school}}</h3>
+                    <em>{{start_date}} - {{end_date}}</em>
                 </div>
                 <div class="col">
                     <strong>
                         {{course}}
                     </strong>
-                    <br /> {{#if grade}} Achieved a {{grade}} {{/if}}
+                    <br /> {{#if grade}} Achieved a {{grade}} {{/if}} {{#ifObject modules}}
                     <p>
                         Modules:
                         <ul>{{#each modules}}
@@ -80,6 +88,11 @@
                             {{/each}}
                         </ul>
                     </p>
+                    {{else}} {{#if modules}}
+                    <p>
+                        Modules: {{modules}}
+                    </p>
+                    {{/if}} {{/ifObject}}
                 </div>
             </div>
             {{/each}}
@@ -88,10 +101,10 @@
         <section>
             <h2>Work Experience</h2>
             {{#each work_experience}}
-            <div class="row">
+            <div class="row mt-4 mb-4">
                 <div class="col">
-                    {{company}}
-                    <br /> {{start_date}} - {{end_date}}
+                    <h3>{{company}}</h3>
+                    <em>{{start_date}} - {{end_date}}</em>
                 </div>
                 <div class="col">
                     <em>
@@ -110,10 +123,10 @@
         <section>
             <h2>Employment History</h2>
             {{#each employment_history}}
-            <div class="row">
+            <div class="row mt-4 mb-4">
                 <div class="col">
-                    {{company}}
-                    <br /> {{start_date}} - {{end_date}}
+                    <h3>{{company}}</h3>
+                    <em>{{start_date}} - {{end_date}}</em>
                 </div>
                 <div class="col">
                     <em>
@@ -131,7 +144,7 @@
         <section>
             <h2>Interests</h2>
             {{#each interests}}
-            <div class="row">
+            <div class="row mt-4 mb-4">
                 <div class="col">
                     <strong>
                         {{title}}
