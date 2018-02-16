@@ -3,6 +3,7 @@
 const configuration = require("../config.json");
 const cv = require("../" + configuration.cvfile);
 
+const HtmlDocx = require('html-docx-js');
 const fs = require('fs');
 const handlebars = require('handlebars');
 const moment = require('moment');
@@ -58,6 +59,12 @@ function loadTemplate(templateName) {
         fs.mkdirSync(dir);
     }
 
+    if (configuration.saveDOCX) {
+        var docx = HtmlDocx.asBlob(html);
+        fs.writeFile(`${path}.docx`, docx, function (err) {
+            if (err) throw err;
+        });
+    }
     if (configuration.saveHTML) {
         fs
             .writeFile(`${path}.html`, html, function (err) {
@@ -70,15 +77,20 @@ function loadTemplate(templateName) {
     let http = require('http');
     let puppeteer = require('puppeteer');
 
-    const server = http.createServer((req, res) => res.end(html)).listen(1337, async() => {
+    const server = http.createServer((req, res) => res.end(html)).listen(1337, async () => {
 
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
-        await page.goto('http://localhost:1337', {waitUntil: 'networkidle0'});
+        await page.goto('http://localhost:1337', {
+            waitUntil: 'networkidle0'
+        });
         await page.waitFor(500);
 
         if (configuration.saveImage) {
-            await page.screenshot({path: `${path}.png`, fullPage: true});
+            await page.screenshot({
+                path: `${path}.png`,
+                fullPage: true
+            });
         }
         if (configuration.savePDF) {
             await page.pdf({
@@ -86,8 +98,8 @@ function loadTemplate(templateName) {
                 footerTemplate: footer,
                 headerTemplate: header,
                 margin: {
-                    top: '50px',
-                    bottom: '50px'
+                    top: '55px',
+                    bottom: '55px'
                 },
                 format: 'A4'
             });

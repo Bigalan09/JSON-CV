@@ -3,5 +3,6 @@
     "cvfile": "cv.json",
     "saveHTML": true,
     "saveImage": true,
-    "savePDF": true
+    "savePDF": true,
+    "saveDOCX": true    
 }
