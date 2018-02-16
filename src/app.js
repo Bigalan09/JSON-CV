@@ -86,8 +86,8 @@ function loadTemplate(templateName) {
                 footerTemplate: footer,
                 headerTemplate: header,
                 margin: {
-                    top: '60px',
-                    bottom: '60px'
+                    top: '50px',
+                    bottom: '50px'
                 },
                 format: 'A4'
             });
