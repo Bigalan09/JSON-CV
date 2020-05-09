@@ -87,7 +87,6 @@
                     </strong>
                     <br /> {{#if grade}} Achieved a {{grade}} {{/if}} {{#ifObject modules}}
                     <p>
-                        Modules:
                         <ul>{{#each modules}}
                             <li>{{this}}</li>
                             {{/each}}
@@ -95,7 +94,7 @@
                     </p>
                     {{else}} {{#if modules}}
                     <p>
-                        Modules: {{modules}}
+                        {{modules}}
                     </p>
                     {{/if}} {{/ifObject}}
                 </div>
@@ -124,7 +123,8 @@
             </div>
             {{/each}}
         </section>
-        {{/if}} {{#if employment_history}}
+        {{/if}}
+        {{#if employment_history}}
         <section>
             <h2>Employment History</h2>
             {{#each employment_history}}
@@ -145,7 +145,20 @@
                 </div>
             </div>
             {{/each}} </section>
-        {{/if}} {{#if interests}}
+        {{/if}}
+        {{#if training}}
+        <section>
+            <h2>Training</h2>
+            {{#each training}}
+            <div class="row mt-4 mb-4">
+                <div class="col">
+                    <h3>{{title}}</h3>
+                    <em>{{completed_date}}</em>
+                </div>
+            </div>
+            {{/each}}
+        </section>
+        {{/if}}  {{#if interests}}
         <section>
             <h2>Interests</h2>
             {{#each interests}}
@@ -159,8 +172,11 @@
             </div>
             {{/each}} {{#if additional_information}}
             <br />
-            <h3>Additional Information</h3>
-            {{additional_information}} {{/if}}
+            <h2>Additional Information</h2>
+            {{additional_information}}
+            <br />
+            This CV was generated with https://github.com/bigalan09/JSON-CV
+            {{/if}}
         </section>
         {{/if}} {{#if references}}
         <section>

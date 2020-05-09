@@ -11,7 +11,7 @@
         "saveDOCX": true
     },
     "cover": {
-        "enabled": true,
+        "enabled": false,
         "dir": "cover",
         "data": "cover.json",
         "saveHTML": true,
