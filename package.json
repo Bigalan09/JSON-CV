@@ -26,7 +26,7 @@
   "homepage": "https://github.com/Bigalan09/JSON-CV#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "html-docx-js": "^0.3.1",
     "moment": "^2.20.1",
     "puppeteer": "^1.20.0"
